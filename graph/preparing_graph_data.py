@@ -12,11 +12,11 @@ import functools
 import spacy
 import sys
 
-#sys.path.append("../../")
-sys.path.append("/kaggle/working/HGSum0608")
+sys.path.append("/kaggle/working/HGSum0608")#sys.path.append("../../")
 from utils.metrics import rouge
-from model.dataloading import concatenate_documents, tokenize_tgs
-#from hgsum.model.dataloading import concatenate_documents, tokenize_tgs
+from model.dataloading import concatenate_documents, tokenize_tgs #from hgsum.model.dataloading import concatenate_documents, tokenize_tgs
+
+
 
 
 def prepare_graph(concatenated_text, glove_wv, online=True, for_summary=False):
@@ -216,7 +216,8 @@ if __name__ == "__main__":
         os.remove(save_file)
 
     samples = []
-    with jsonlines.open("../../datasets/%s.json" % dataset_name) as reader:
+    #with jsonlines.open("../../datasets/%s.json" % dataset_name) as reader:
+    with jsonlines.open("/kaggle/working/HGSum0608/data/datasets/%s.json" % dataset_name) as reader:
         for sample in reader:
             samples.append(sample)
     random.seed(42)
