@@ -211,7 +211,7 @@ if __name__ == "__main__":
     tokenizer.add_tokens(["<sent-sep>"])
     sentsep_token_id = tokenizer.convert_tokens_to_ids("<sent-sep>")
 
-    save_file = "../data/%s_graph_%s.json" % (dataset_name, token_type)
+    save_file = "/kaggle/working/HGSum0608/data/%s_graph_%s.json" % (dataset_name, token_type) #"../data/%s_graph_%s.json"
     if os.path.exists(save_file):
         os.remove(save_file)
 
