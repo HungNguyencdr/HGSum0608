@@ -85,19 +85,19 @@ if __name__ == "__main__":
     dataset_name = "multinews"
     token_type = "noun"
 
-    save_file = "../data/%s_graph_%s_sentem.json" % (dataset_name, token_type)
+    save_file = "/kaggle/working/HGSum0608/data/%s_graph_%s_sentem.json" % (dataset_name, token_type)#../data/%s_graph_%s_sentem.json
     if os.path.exists(save_file):
         os.remove(save_file)
 
     all_count = 0
-    with jsonlines.open("../data/%s_graph_%s.json" % (dataset_name, token_type)) as reader:
+    with jsonlines.open("/kaggle/working/HGSum0608/data/%s_graph_%s.json" % (dataset_name, token_type)) as reader:#../data/%s_graph_%s_sentem.json
         for sample in reader:
             all_count += 1
 
     start_time = time.time()
     samples = []
     index = 0
-    with jsonlines.open("../data/%s_graph_%s.json" % (dataset_name, token_type)) as reader:
+    with jsonlines.open("/kaggle/working/HGSum0608/data/%s_graph_%s.json" % (dataset_name, token_type)) as reader:#../data/%s_graph_%s_sentem.json
         for sample in reader:
             samples.append(sample)
             index += 1
