@@ -5,7 +5,7 @@ from nltk.tokenize import sent_tokenize
 from datasets import load_dataset
 import sys
 
-sys.path.append("/kaggle/working/HGSum0608/model")#sys.path.append("../")
+sys.path.append("/kaggle/working/HGSum0608")#sys.path.append("../")
 from graph.building_graph import build_graph
 
 
