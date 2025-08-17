@@ -66,7 +66,7 @@ if __name__ == "__main__":
     dataset_name = "multinews"
     token_type = "noun"
     samples = []
-    with jsonlines.open("../data/%s_graph_%s_sentem.json" % (dataset_name, token_type)) as reader:
+    with jsonlines.open("/kaggle/working/HGSum0608/data/%s_graph_%s_sentem.json" % (dataset_name, token_type)) as reader:#../data
         for sample in reader:
             samples.append(sample)
             if len(samples)==8:
