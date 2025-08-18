@@ -119,28 +119,6 @@ class HGSummarizer(pl.LightningModule):
         return lm_logits, outputs_source.mgat_outputs, outputs_source.sagpooling_outputs, outputs_summary.mgat_outputs
         # return lm_logits, outputs_source.mgat_outputs, outputs_source.sagpooling_outputs, None
 
-    # def configure_optimizers(self):
-    #     if self.args.adafactor:
-    #         optimizer = Adafactor(
-    #             self.parameters(),
-    #             lr=self.args.lr,
-    #             scale_parameter=False,
-    #             relative_step=False,
-    #         )
-    #         scheduler = get_constant_schedule_with_warmup(
-    #             optimizer, num_warmup_steps=self.args.warmup_steps
-    #         )
-    #     else:
-    #         optimizer = torch.optim.Adam(self.parameters(), lr=self.args.lr)
-    #         scheduler = get_linear_schedule_with_warmup(
-    #             optimizer,
-    #             num_warmup_steps=self.args.warmup_steps,
-    #             num_training_steps=self.args.total_steps,
-    #         )
-    #     if self.args.fix_lr:
-    #         return optimizer
-    #     return [optimizer], [{"scheduler": scheduler, "interval": "step"}]
-
     def configure_optimizers(self):
         if self.args.adafactor:
             optimizer = Adafactor(
@@ -159,18 +137,11 @@ class HGSummarizer(pl.LightningModule):
                 num_warmup_steps=self.args.warmup_steps,
                 num_training_steps=self.args.total_steps,
             )
-
         if self.args.fix_lr:
             return optimizer
+        return [optimizer], [{"scheduler": scheduler, "interval": "step"}]
 
-        return {
-        "optimizer": optimizer,
-        "lr_scheduler": {
-            "scheduler": scheduler,
-            "interval": "step",   # update every training step
-            "frequency": 1,
-        },
-    }
+    
 
     def shared_step(self, input_ids_source, output_ids, input_ids_summary, heterograph_source, words_positions_source,
                     sents_positions_source,
