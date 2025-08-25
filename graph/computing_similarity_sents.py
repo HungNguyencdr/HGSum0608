@@ -82,7 +82,7 @@ if __name__ == "__main__":
     sbert = SentenceTransformer("all-mpnet-base-v2", device="cuda")
     print("SentenceTransformers loaded")
 
-    dataset_name = "multinews"
+    dataset_name = "arxiv"
     token_type = "noun"
 
     save_file = "/kaggle/working/HGSum0608/data/%s_graph_%s_sentem.json" % (dataset_name, token_type)#../data/%s_graph_%s_sentem.json
