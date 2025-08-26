@@ -2247,6 +2247,12 @@ class LEDModel(LEDPreTrainedModel):
 
             hgat = to_hetero(self.gat, heterograph_sample.metadata(), aggr='sum')
             heterograph_sample = T.ToUndirected()(heterograph_sample)
+            # fix bug 26/08
+            print("DEBUG >>> x_dict keys:", heterograph_sample.x_dict.keys())
+            for ntype, x in heterograph_sample.x_dict.items():
+                print(f"Node {ntype}: {x.shape}")
+            print("DEBUG >>> edge_index_dict keys:", heterograph_sample.edge_index_dict.keys())
+
             hgat_output = hgat(heterograph_sample.x_dict, heterograph_sample.edge_index_dict)
             if docs_positions_source != None:
                 hgat_average_embedding = (torch.mean(hgat_output["token"], 0, False) + torch.mean(hgat_output["sent"],
