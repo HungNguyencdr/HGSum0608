@@ -2244,7 +2244,7 @@ class LEDModel(LEDPreTrainedModel):
                 docs_positions_source_sample = docs_positions_source[index % len(docs_positions_source)].to(device)
                 heterograph_sample["doc"].x = torch.index_select(last_hidden_state_sample, 0,
                                                                  docs_positions_source_sample)
-
+            print("DEBUG >>> metadata:", heterograph_sample.metadata())
             hgat = to_hetero(self.gat, heterograph_sample.metadata(), aggr='sum')
             heterograph_sample = T.ToUndirected()(heterograph_sample)
             # fix bug 26/08
