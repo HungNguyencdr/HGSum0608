@@ -2246,11 +2246,16 @@ class LEDModel(LEDPreTrainedModel):
                                                                  docs_positions_source_sample)
             hgat = to_hetero(self.gat, heterograph_sample.metadata(), aggr='sum')
             heterograph_sample = T.ToUndirected()(heterograph_sample)
-            # fix
-            print(heterograph_sample.x_dict)
-            print(heterograph_sample.edge_index_dict)
-            # end
-            hgat_output = hgat(heterograph_sample.x_dict, heterograph_sample.edge_index_dict)
+            # embedding code for fixing bug -----------------------------------------------------
+            try:
+                hgat_output = hgat(heterograph_sample.x_dict, heterograph_sample.edge_index_dict)
+            except AssertionError as e:
+                print("AssertionError in hgat forward!")
+                import sys, traceback
+                traceback.print_exc(file=sys.stdout)
+                raise
+            #------------------------------------------------------------------------------------
+            #hgat_output = hgat(heterograph_sample.x_dict, heterograph_sample.edge_index_dict)
             if docs_positions_source != None:
                 hgat_average_embedding = (torch.mean(hgat_output["token"], 0, False) + torch.mean(hgat_output["sent"],
                                                                                                   0,
