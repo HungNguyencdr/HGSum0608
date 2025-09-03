@@ -2247,7 +2247,8 @@ class LEDModel(LEDPreTrainedModel):
             hgat = to_hetero(self.gat, heterograph_sample.metadata(), aggr='sum')
             heterograph_sample = T.ToUndirected()(heterograph_sample)
             # fix
-            print(heterograph_sample)
+            print(heterograph_sample.x_dict)
+            print(heterograph_sample.edge_index_dict)
             # end
             hgat_output = hgat(heterograph_sample.x_dict, heterograph_sample.edge_index_dict)
             if docs_positions_source != None:
