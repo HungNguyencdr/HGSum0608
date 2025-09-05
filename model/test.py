@@ -21,7 +21,7 @@ graph = T.ToUndirected()(graph)
 
 # ogb_mag = OGB_MAG(root='./test_data', preprocess='metapath2vec', transform=T.ToUndirected())
 # graph = ogb_mag[0]
-
+print(type(graph))
 print(graph.metadata())
 
 
