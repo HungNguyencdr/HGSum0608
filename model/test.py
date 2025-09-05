@@ -45,6 +45,10 @@ model = GAT(hidden_channels=8, out_channels=1)
 model = to_hetero(model, (['token', 'sent', 'doc'], graph.metadata()[1]), aggr='sum')
 # model = to_hetero(model, (['paper', 'author', 'institution', 'field_of_study'], graph.metadata()[1]), aggr='sum')
 print(graph)
+#------------------------------Embbeding Code----------------------------------
+print("type of graph.x_dict: ", type(graph.x_dict))
+print("type of graph.edge_index_dict", type(graph.edge_index_dict))
+#------------------------------------------------------------------------------
 out = model(graph.x_dict, graph.edge_index_dict)
 print("Output")
 print(out)
