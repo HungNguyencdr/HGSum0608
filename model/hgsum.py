@@ -535,7 +535,7 @@ if __name__ == "__main__":
     parser.add_argument("--lr", type=float, default=3e-5, help="Maximum learning rate")
     parser.add_argument("--warmup_steps", type=int, default=1000, help="Number of warmup steps")
     parser.add_argument("--accum_data_per_step", type=int, default=16, help="Number of data per step")
-    parser.add_argument("--total_steps", type=int, default=50000, help="Number of steps to train")
+    parser.add_argument("--total_steps", type=int, default=30, help="Number of steps to train")#50000
     parser.add_argument("--num_train_data", type=int, default=-1,
                         help="Number of training data, -1 for full dataset and any positive number indicates how many data to use")
     parser.add_argument("--fix_lr", action="store_true", help="use fix learning rate")
