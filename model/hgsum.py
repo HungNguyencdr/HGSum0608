@@ -480,6 +480,7 @@ def test(args):
         limit_test_batches=args.limit_test_batches if args.limit_test_batches else 1.0
     )
 
+    args.resume_ckpt = None #Ép đường dẫn ckpt về None
     if args.resume_ckpt is not None:
         model = HGSummarizer.load_from_checkpoint(args.resume_ckpt, args=args)
     else:
