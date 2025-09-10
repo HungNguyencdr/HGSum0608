@@ -1598,6 +1598,7 @@ class LEDEncoder(LEDPreTrainedModel):
             output_attentions=None,
             output_hidden_states=None,
             return_dict=None,
+            heterograph=None #For fixing bug
     ):
         r"""
         Args:
