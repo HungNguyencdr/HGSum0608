@@ -222,7 +222,7 @@ class HGSummarizer(pl.LightningModule):
             num_beams=self.args.beam_size,
             no_repeat_ngram_size=3 if self.args.apply_triblck else None,
             length_penalty=self.args.length_penalty,
-            heterograph=None, #test for fixing bug, original: heterograph=heterograph_source
+            heterograph=heterograph_source,
             words_positions_source=words_positions_source,
             sents_positions_source=sents_positions_source,
             docs_positions_source=docs_positions_source,
