@@ -1600,7 +1600,8 @@ class LEDEncoder(LEDPreTrainedModel):
             return_dict=None,
             heterograph=None, #For fixing bug
             words_positions_source=None, #For fixing bug
-            sents_positions_source=None
+            sents_positions_source=None, #For fixing bug
+            docs_positions_source=None
     ):
         r"""
         Args:
