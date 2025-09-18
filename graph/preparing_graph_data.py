@@ -203,7 +203,7 @@ def prepare_graph_multi_process_offline(i, samples, tokenizer, glove_wv):
 if __name__ == "__main__":
     nlp = spacy.load('en_core_web_sm')
 
-    dataset_name = "multinews"
+    dataset_name = "arxiv"
     token_type = "noun"
     pretrained_primer = "allenai/PRIMERA"
     tokenizer = LEDTokenizer.from_pretrained(pretrained_primer)
