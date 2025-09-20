@@ -357,6 +357,9 @@ class HGSummarizer(pl.LightningModule):
         return names, metrics, avgf
 
     def validation_epoch_end(self, outputs):
+        #----------For-fixing-bug----------
+        print("validation_epoch_end() run!")
+        #----------------------------------
         for p in self.model.parameters():
             p.requires_grad = True
 
@@ -423,7 +426,7 @@ def train(args):
     #----------For-checking-ckpt-path--------------
     print(args.ckpt_path)
     #----------------------------------------------
-    
+
     checkpoint_callback = ModelCheckpoint(
         dirpath=args.ckpt_path,
         filename="{step}-{vloss:.2f}-{avgf:.4f}",
