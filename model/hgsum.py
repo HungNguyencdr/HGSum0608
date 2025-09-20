@@ -420,6 +420,10 @@ def train(args):
     if args.ckpt_path is None:
         args.ckpt_path = os.path.join(args.model_path, "summ_checkpoints/")
 
+    #----------For-checking-ckpt-path--------------
+    print(args.ckpt_path)
+    #----------------------------------------------
+    
     checkpoint_callback = ModelCheckpoint(
         dirpath=args.ckpt_path,
         filename="{step}-{vloss:.2f}-{avgf:.4f}",
