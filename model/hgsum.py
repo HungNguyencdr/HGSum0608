@@ -455,7 +455,7 @@ def train(args):
         logger=logger,
         log_every_n_steps=5,
         callbacks=[checkpoint_callback, early_stopping],
-        precision=16, #32
+        precision=32, #32
         limit_train_batches=args.limit_train_batches if args.limit_train_batches else 1.0,
         limit_val_batches=args.limit_val_batches if args.limit_val_batches else 1.0,
         num_sanity_val_steps=0
