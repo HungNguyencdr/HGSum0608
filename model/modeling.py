@@ -2228,7 +2228,7 @@ class LEDModel(LEDPreTrainedModel):
                 global_attentions=encoder_outputs[3] if len(encoder_outputs) > 3 else None,
             )
 
-        device = "cpu" #device = "cuda"
+        device = "cuda" #device = "cuda"
         hgat_average_embeddings = []
         sagpooling_average_embeddings = []
         decoder_input_new = []
