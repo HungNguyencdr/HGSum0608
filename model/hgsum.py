@@ -18,7 +18,7 @@ from dataloading import get_dataloader_summ
 
 import sys
 
-sys.path.append("/kaggle/working/HGSum0608")#sys.path.append("../../")
+sys.path.append("../../")#sys.path.append("/kaggle/working/HGSum0608")
 from utils.metrics import rouge
 
 
