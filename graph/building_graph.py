@@ -63,7 +63,7 @@ def build_graph(heterograph_data, for_summary=False):
 if __name__ == "__main__":
     import jsonlines
 
-    dataset_name = "multinews"
+    dataset_name = "arxiv"
     token_type = "noun"
     samples = []
     with jsonlines.open("/kaggle/working/HGSum0608/data/%s_graph_%s_sentem.json" % (dataset_name, token_type)) as reader:#../data
